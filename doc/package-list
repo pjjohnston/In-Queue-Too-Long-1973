@@ -1,0 +1,9 @@
+com.joebloggs.workorders.rest.action
+com.joebloggs.workorders.rest.dto
+com.joebloggs.workorders.rest.representations
+com.joebloggs.workorders.rest.resource
+com.joebloggs.workorders.rest.util
+com.joebloggs.workorders.service.api
+com.joebloggs.workorders.service.exception
+com.joebloggs.workorders.service.impl
+com.joebloggs.workorders.service.util
