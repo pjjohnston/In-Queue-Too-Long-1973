@@ -24,7 +24,7 @@ import com.joebloggs.workorders.service.exception.ValidationException;
 import com.joebloggs.workorders.service.util.WorkOrderUtil;
 
 /**
- * Singleton wrapper Class for Priority Queue @see com.joebloggs.workorders.service.api.WorkOrderSchedulingService
+ * Singleton wrapper Class for Priority Queue @see com.joebloggs.workorders.service.api.WorkOrderSchedulingService. Queue is thread safe.
  */
 public class WorkOrderPriorityQueue implements WorkOrderSchedulingService {
     private static final String INVALID_ID = "Order ID invalid";

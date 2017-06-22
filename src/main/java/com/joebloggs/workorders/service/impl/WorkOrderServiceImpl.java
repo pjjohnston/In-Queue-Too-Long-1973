@@ -23,9 +23,11 @@ import com.joebloggs.workorders.service.exception.ValidationException;
  * Concrete implementation of @see com.joebloggs.workorders.service.api.WorkOrderSchedulingService
  */
 public class WorkOrderServiceImpl implements WorkOrderSchedulingService {
-    private final WorkOrderSchedulingService workOrderSchedulingService = WorkOrderPriorityQueue.getInstance();
+    private final WorkOrderSchedulingService workOrderSchedulingService;
 
-    public WorkOrderServiceImpl() {}
+    public WorkOrderServiceImpl(final WorkOrderSchedulingService workOrderSchedulingService) {
+        this.workOrderSchedulingService = workOrderSchedulingService;
+    }
 
     @Override
     public void enqueue(final WorkOrder workOrder) throws ValidationException {

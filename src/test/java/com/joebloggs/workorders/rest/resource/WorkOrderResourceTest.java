@@ -38,8 +38,6 @@ import com.joebloggs.workorders.rest.representations.OperationResultRepresentati
 import com.joebloggs.workorders.rest.representations.OrderListRepresentation;
 import com.joebloggs.workorders.rest.representations.OrderPositionRepresentation;
 import com.joebloggs.workorders.rest.representations.WorkOrderRepresentation;
-import com.joebloggs.workorders.service.exception.EmptyQueueException;
-import com.joebloggs.workorders.service.exception.ValidationException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
@@ -83,7 +81,7 @@ public class WorkOrderResourceTest {
     }
 
     @Test
-    public void testEnqueueForValidQueue() throws ValidationException, EmptyQueueException {
+    public void testEnqueueForValidQueue() {
         addOrderRequest(NORMAL_ID, ADD_DATE);
         addOrderRequest(VIP_ID, ADD_DATE);
 
@@ -92,20 +90,20 @@ public class WorkOrderResourceTest {
     }
 
     @Test
-    public void testEnqueueForInvalidId() throws ValidationException {
+    public void testEnqueueForInvalidId() {
         final OperationResultRepresentation response = addOrderRequest(INVALID_ID, ADD_DATE);
         assertFalse(response.getErrorMessage().equals(NO_ERRORS));
     }
 
     @Test
-    public void testEnqueueForDuplicateId() throws ValidationException {
+    public void testEnqueueForDuplicateId() {
         addOrderRequest(VIP_ID, ADD_DATE);
         final OperationResultRepresentation response = addOrderRequest(VIP_ID, ADD_DATE);
         assertFalse(response.getErrorMessage().equals(NO_ERRORS));
     }
 
     @Test
-    public void testDequeueForValidQueue() throws ValidationException, EmptyQueueException {
+    public void testDequeueForValidQueue() {
         addOrderRequest(NORMAL_ID, ADD_DATE);
         addOrderRequest(VIP_ID, ADD_DATE);
 
@@ -114,13 +112,13 @@ public class WorkOrderResourceTest {
     }
 
     @Test
-    public void testDequeueForEmptyQueue() throws EmptyQueueException {
+    public void testDequeueForEmptyQueue() {
         final WorkOrderRepresentation response = getNextOrderRequest();
         assertFalse(response.getErrorMessage().equals(NO_ERRORS));
     }
 
     @Test
-    public void testGetIdListForValidQueue() throws ValidationException, EmptyQueueException {
+    public void testGetIdListForValidQueue() {
         addOrderRequest(VIP_ID, ADD_DATE);
         addOrderRequest(NORMAL_ID, ADD_DATE);
         addOrderRequest(MANAGEMENT_ID, ADD_DATE);
@@ -130,13 +128,13 @@ public class WorkOrderResourceTest {
     }
 
     @Test
-    public void testGetIdListForEmptyQueue() throws ValidationException, EmptyQueueException {
+    public void testGetIdListForEmptyQueue() {
         final OrderListRepresentation response = getPriorityListRequest();
         assertFalse(response.getErrorMessage().equals(NO_ERRORS));
     }
 
     @Test
-    public void testRemoveOrderForValidQueue() throws ValidationException, EmptyQueueException {
+    public void testRemoveOrderForValidQueue() {
         addOrderRequest(VIP_ID, ADD_DATE);
         addOrderRequest(NORMAL_ID, ADD_DATE);
         addOrderRequest(MANAGEMENT_ID, ADD_DATE);
@@ -149,7 +147,7 @@ public class WorkOrderResourceTest {
     }
 
     @Test
-    public void testRemoveOrderForNonExistentId() throws ValidationException, EmptyQueueException {
+    public void testRemoveOrderForNonExistentId() {
         addOrderRequest(VIP_ID, ADD_DATE);
         addOrderRequest(NORMAL_ID, ADD_DATE);
         addOrderRequest(MANAGEMENT_ID, ADD_DATE);
@@ -160,13 +158,13 @@ public class WorkOrderResourceTest {
     }
 
     @Test
-    public void testRemoveOrderForEmptyQueue() throws ValidationException, EmptyQueueException {
+    public void testRemoveOrderForEmptyQueue() {
         final OperationResultRepresentation response = removeOrderRequest(MANAGEMENT_ID);
         assertFalse(response.getErrorMessage().equals(NO_ERRORS));
     }
 
     @Test
-    public void testGetOrderPositionInQueueForValidQueue() throws ValidationException, EmptyQueueException {
+    public void testGetOrderPositionInQueueForValidQueue() {
         addOrderRequest(VIP_ID, ADD_DATE);
         addOrderRequest(NORMAL_ID, ADD_DATE);
         addOrderRequest(MANAGEMENT_ID, ADD_DATE);
@@ -177,13 +175,13 @@ public class WorkOrderResourceTest {
     }
 
     @Test
-    public void testGetOrderPositionInQueueForEmptyQueue() throws ValidationException, EmptyQueueException {
+    public void testGetOrderPositionInQueueForEmptyQueue() {
         final OrderPositionRepresentation response = getPositionInQueueRequest(NORMAL_ID);
         assertFalse(response.getErrorMessage().equals(NO_ERRORS));
     }
 
     @Test
-    public void testGetOrderPositionInQueueForNonExistingId() throws ValidationException, EmptyQueueException {
+    public void testGetOrderPositionInQueueForNonExistingId() {
         addOrderRequest(VIP_ID, ADD_DATE);
         addOrderRequest(NORMAL_ID, ADD_DATE);
         addOrderRequest(MANAGEMENT_ID, ADD_DATE);
@@ -194,7 +192,7 @@ public class WorkOrderResourceTest {
     }
 
     @Test
-    public void testGetAverageWaitTimeForOrdersForValidQueue() throws ValidationException, EmptyQueueException {
+    public void testGetAverageWaitTimeForOrdersForValidQueue() {
         addOrderRequest(VIP_ID, ADD_DATE);
         addOrderRequest(NORMAL_ID, ADD_DATE);
         addOrderRequest(MANAGEMENT_ID, ADD_DATE);
@@ -205,7 +203,7 @@ public class WorkOrderResourceTest {
     }
 
     @Test
-    public void testGetAverageWaitTimeForOrdersForEmptyQueue() throws ValidationException, EmptyQueueException {
+    public void testGetAverageWaitTimeForOrdersForEmptyQueue() {
         final AverageTimeRepresentation response = getAverageWaitTimeRequest(ONE_HOUR_LATER);
         assertFalse(response.getErrorMessage().equals(NO_ERRORS));
     }

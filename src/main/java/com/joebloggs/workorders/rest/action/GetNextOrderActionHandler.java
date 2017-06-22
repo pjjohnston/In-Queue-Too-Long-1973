@@ -19,7 +19,7 @@ import com.joebloggs.workorders.service.api.WorkOrderSchedulingService;
 import com.joebloggs.workorders.service.impl.WorkOrder;
 
 /**
- * Action handler for retrieving highest priority order.
+ * Action handler for getting next order from queue.
  *
  * @see com.joebloggs.workorders.rest.action.ActionHandler
  */

@@ -20,8 +20,8 @@ import com.joebloggs.workorders.rest.representations.Representation;
 import com.joebloggs.workorders.service.api.WorkOrderSchedulingService;
 
 /**
- * Action handler for retrieving highest priority order.
- * 
+ * Action handler for priority list of orders.
+ *
  * @see com.joebloggs.workorders.rest.action.ActionHandler
  */
 public class GetOrderListActionHandler implements ActionHandler {

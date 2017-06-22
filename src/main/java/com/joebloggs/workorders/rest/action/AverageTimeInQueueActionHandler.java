@@ -19,8 +19,8 @@ import com.joebloggs.workorders.rest.util.EncodingUtil;
 import com.joebloggs.workorders.service.api.WorkOrderSchedulingService;
 
 /**
- * Action handler for retrieving highest priority order.
- * 
+ * Action handler for retrieving average time in queue for orders.
+ *
  * @see com.joebloggs.workorders.rest.action.ActionHandler
  */
 public class AverageTimeInQueueActionHandler implements ActionHandler {

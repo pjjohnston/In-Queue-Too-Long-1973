@@ -18,7 +18,7 @@ import com.joebloggs.workorders.rest.representations.Representation;
 import com.joebloggs.workorders.service.api.WorkOrderSchedulingService;
 
 /**
- * Action handler for returning average time in queue.
+ * Action handler for removing an order from the queue.
  *
  * @see com.joebloggs.workorders.rest.action.ActionHandler
  */
