@@ -2,6 +2,9 @@
 Joe Bloggs Inc - Order Prioiritisation Web Service
 **************************************************
 
+=== Note
+For javadocs see joe-bloggs-queue-order/doc/index.html
+
 ********
 Sections
 ********
@@ -25,10 +28,6 @@ http://docs.oracle.com/javase/7/docs/webnotes/install/
 
 === Install Maven 3 or later
 https://maven.apache.org/download.cgi
-
-=== CD into root directory of project (joe-bloggs-queue-order - current directory)
-There you should see the following files:
-mvnw  mvnw.cmd  pom.xml
 
 === CD into root directory of project (joe-bloggs-queue-order - current directory)
 There you should see the following files:
